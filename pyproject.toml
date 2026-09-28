@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fluid2d-numba"
+version = "0.1.0"
+description = "A lightweight 2D incompressible fluid solver for learning and interactive prototyping."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "numpy>=1.26",
+    "numba>=0.60",
+]
+
+[project.optional-dependencies]
+viz = [
+    "pygame>=2.5",
+    "matplotlib>=3.8",
+]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+all = [
+    "pygame>=2.5",
+    "matplotlib>=3.8",
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
